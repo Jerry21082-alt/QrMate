@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  font-family: "Poppins", sans-serif;
+}
+
+.media-scroller {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: min-content;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  padding: 0 1rem;
+  gap: 1rem;
+}
+
+.snaps {
+  scroll-snap-type: inline mandatory;
+  scroll-padding-inline: 1rem;
+}
+.snaps > * {
+  scroll-snap-align: start;
+}
+
+.calendar-opened {
+  visibility: visible;
+  opacity: 1;
+  transform: translate3d(0, 1rem, 0);
+  transition-property: opacity, transform;
+}
+
+.calendar-closed {
+  opacity: 0;
+  visibility: inherit;
+  pointer-events: none;
+  transform: translate3d(0, 0, 0);
+  transition-property: opacity, transform;
+}
+
+.calendar-opened,
+.calendar-closed {
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+}
