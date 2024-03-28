@@ -1,7 +1,7 @@
 "use client";
 
 import { GoHomeFill } from "react-icons/go";
-import { FiPlusCircle } from "react-icons/fi";
+import { FaPlusCircle } from "react-icons/fa";
 import { IoNotificationsOutline } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
 import Link from "next/link";
@@ -35,7 +35,7 @@ export default function Menu({ navRef }) {
         color={pathname === "/pages/home" ? "#CA2828" : "#9f9f9f"}
       />
 
-      <FiPlusCircle
+      <FaPlusCircle
         onClick={() => navigate("/pages/create")}
         size={25}
         color={pathname === "/pages/create" ? "#CA2828" : "#9f9f9f"}
