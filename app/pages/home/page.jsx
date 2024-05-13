@@ -185,7 +185,7 @@ export default function Home() {
               <h3 className="text-grey font-semibold text-lg my-2">
                 No active Qrcode
               </h3>
-              <Link href="/pages/create mt-8 block">
+              <Link href="/pages/create">
                 <FiPlusCircle size={40} color="#fff" />
               </Link>
             </div>

@@ -6,6 +6,7 @@ import { edit } from "@/public";
 import QRcode from "qrcode";
 import { generateRandomId } from "@/helper";
 import LocalStorage from "@/hooks/LocalStorage";
+
 const Context = createContext();
 
 export default function StateContext({ children }) {
