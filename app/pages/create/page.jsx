@@ -7,7 +7,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { FiSearch } from "react-icons/fi";
 import { exportContext } from "@/components/useStateContext/StateContext";
 
 const selectQrcode = [
