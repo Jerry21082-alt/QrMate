@@ -2,11 +2,9 @@
 
 import Nav from "@/components/Nav";
 import Wrapper from "@/components/Wrapper";
-import { MdNavigateNext, MdNavigateBefore } from "react-icons/md";
 import { useRouter } from "next/navigation";
 import { RotatingLines } from "react-loader-spinner";
 import { exportContext } from "@/components/useStateContext/StateContext";
-import { MdOutlineIosShare, MdOutlinePrint } from "react-icons/md";
 
 export default function page() {
   const {
