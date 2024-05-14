@@ -54,7 +54,7 @@ export default function Home() {
     });
 
     setQrcodes(target);
-    console.log(qrcodes)
+    console.log(qrcodes);
   };
 
   const handleQrcoderesume = (id) => {
@@ -81,26 +81,10 @@ export default function Home() {
   };
 
   return (
-    <div className="relative h-screen">
+    <div className="relative">
       <Nav />
       <Wrapper>
         <section className="mt-14 bg-black z-50">
-          <div className="flex justify-between items-center px-2">
-            <div className="flex items-center space-x-2">
-              <div className="flex justify-center items-center w-[50px] h-[50px] rounded-full overflow-hidden">
-                <Image src={user} alt="user photo" />
-              </div>
-              <span className="font-semibold text-white">
-                Hello <span className="text-red font-semibold">Mary</span>
-              </span>
-            </div>
-
-            <div className="flex items-center space-x-5">
-              <MdOutlineInfo color="#9f9f9f" size={20} />
-              <IoSettingsOutline size={20} color="#9f9f9f" />
-            </div>
-          </div>
-
           <h1 className="text-center font-semibold my-5 text-2xl text-white">
             Your QR codes
           </h1>
@@ -121,7 +105,7 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="flex items-center justify-between mt-8 space-x-3 p-4 rounded-md border border-grey">
+          <div className="flex items-center justify-between mt-8 space-x-3 p-2 rounded-md border border-grey">
             <FiSearch size={30} color="#9f9f9f" />
             <input
               placeholder="Search for QR code"
@@ -152,44 +136,44 @@ export default function Home() {
             setSelectedDate={setSelectedDate}
             selectedDate={selectedDate}
           />
-        </section>
 
-        <section className="absolute bottom-0 left-0 w-full max-h-[35vh] overflow-y-auto p-2 flex justify-center items-center h-full">
-          {qrcodes.length && isMounted ? (
-            <div className="h-full w-full flex flex-col justify-start">
-              {filteredItems.map((detail, i) => (
-                <div key={i} className="pb-3">
-                  <QrCodeDetails
-                    type={detail.type}
-                    url={
-                      detail.url.length > 10
-                        ? `${detail.url.substring(0, 10)}...`
-                        : detail.url
-                    }
-                    src={detail.src}
-                    name={
-                      detail.name.length > 10
-                        ? `${detail.name.substring(0, 10)}...`
-                        : detail.name
-                    }
-                    detail={detail}
-                    handleQrcodepause={handleQrcodepause}
-                    handleQrcoderesume={handleQrcoderesume}
-                    handleDeleteQrcode={handleDeleteQrcode}
-                  />
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="flex flex-col justify-center items-center mt-10">
-              <h3 className="text-grey font-semibold text-lg my-2">
-                No active Qrcode
-              </h3>
-              <Link href="/pages/create">
-                <FiPlusCircle size={40} color="#fff" />
-              </Link>
-            </div>
-          )}
+          <div >
+            {qrcodes.length && isMounted ? (
+              <div className="h-full w-full flex flex-col justify-start max-h-[500px]" id="scroll">
+                {filteredItems.map((detail, i) => (
+                  <div key={i} className="pb-3">
+                    <QrCodeDetails
+                      type={detail.type}
+                      url={
+                        detail.url.length > 10
+                          ? `${detail.url.substring(0, 10)}...`
+                          : detail.url
+                      }
+                      src={detail.src}
+                      name={
+                        detail.name.length > 10
+                          ? `${detail.name.substring(0, 10)}...`
+                          : detail.name
+                      }
+                      detail={detail}
+                      handleQrcodepause={handleQrcodepause}
+                      handleQrcoderesume={handleQrcoderesume}
+                      handleDeleteQrcode={handleDeleteQrcode}
+                    />
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="flex flex-col justify-center items-center mt-10">
+                <h3 className="text-grey font-semibold text-lg my-2">
+                  No active Qrcode
+                </h3>
+                <Link href="/pages/create">
+                  <FiPlusCircle size={40} color="#fff" />
+                </Link>
+              </div>
+            )}
+          </div>
         </section>
       </Wrapper>
     </div>
