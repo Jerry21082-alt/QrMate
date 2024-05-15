@@ -76,7 +76,7 @@ export default function CreatePage() {
         Create QRcode
       </h1>
 
-      <div className="flex items-center justify-between mt-8 space-x-3 bg-lightCulture p-4 rounded-md border border-culture">
+      <div className="flex items-center justify-between mt-8 space-x-3 bg-lightCulture p-2 rounded-md border border-culture">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           version="1.1"
@@ -99,14 +99,14 @@ export default function CreatePage() {
         Select your QR code type
       </h2>
 
-      <div className="flex justify-center items-center gap-5 flex-wrap mt-8">
+      <div className="flex justify-center items-center flex-wrap mt-8">
         {selectQrcode.map((select, i) => (
           <div
             onClick={() => handleSelectFormat(i, select.type)}
             key={i}
             className={`${
               selectFormat === i ? "bg-red" : "bg-grey"
-            } w-[150px] rounded-md flex flex-col items-center justify-center py-5 border`}
+            } w-[150px] rounded-md flex flex-col items-center justify-center py-4 mr-4 mt-4 border`}
           >
             <div className="flex justify-center items-center w-[30px]">
               <Image src={select.icon} alt="qrcode format icons" />

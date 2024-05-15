@@ -95,7 +95,7 @@ export default function Home() {
           Your QR codes
         </h1>
 
-        <div className="flex flex-wrap justify-between items-center w-full mt-10">
+        <div className="flex justify-between items-center w-full mt-10">
           {Object.values(filterButtonsText).map((text, index) => (
             <button
               key={text}
@@ -121,7 +121,7 @@ export default function Home() {
 
         <div className="my-5 w-full">
           <div className="flex justify-between items-center">
-            <div className="flex items-center">
+            <div className="flex items-center space-x-1">
               <h3 className="font-semibold text-grey">
                 {filterItems} QR Codes
               </h3>
@@ -144,7 +144,7 @@ export default function Home() {
         />
       </section>
 
-      <div id="scroll" className="h-[300px]" ref={ref}>
+      <div id="scroll" className="max-h-[500px]" ref={ref}>
         {qrcodes.length && isMounted ? (
           <div className="h-full w-full flex flex-col justify-start">
             {filteredItems.map((detail, i) => (

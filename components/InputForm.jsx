@@ -14,18 +14,18 @@ export default function InputForm({
           customizePage ? "hidden" : null
         } mt-10 flex flex-col gap-5`}
       >
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col space-y-2">
           <label htmlFor="name" className="text-grey">Name your QRcode</label>
           <input
             id="name"
             value={qrcodeName}
             placeholder="Enter name here"
             onChange={(e) => setQrcodeName(e.target.value)}
-            className="w-full text-white shadow-sm rounded-md p-4 bg-lightCulture border-2 outline-none bg-transparent"
+            className="w-full text-white shadow-sm rounded-md p-2 bg-lightCulture border-2 outline-none bg-transparent"
           />
         </div>
 
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col space-y-2">
           <label htmlFor="url" className="text-grey">
             {qrCodeType === "website"
               ? "Enter website URL"
@@ -42,7 +42,7 @@ export default function InputForm({
             value={url}
             placeholder="Enter URL here"
             onChange={(e) => setUrl(e.target.value)}
-            className="w-full text-white shadow-sm rounded-md p-4 bg-lightCulture border-2 outline-none bg-transparent"
+            className="w-full text-white shadow-sm rounded-md p-2 bg-lightCulture border-2 outline-none bg-transparent"
           />
         </div>
       </form>

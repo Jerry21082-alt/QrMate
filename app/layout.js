@@ -1,6 +1,7 @@
 "use client";
 
 import '../styles/global.css';
+import '../styles/typography.css'
 
 import StateContext from "@/components/useStateContext/StateContext";
 import GeneralMsg from "@/components/GeneralMsg";

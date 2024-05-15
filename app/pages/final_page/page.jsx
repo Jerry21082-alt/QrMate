@@ -109,7 +109,7 @@ export default function page() {
         </div>
       </div>
 
-      <div className="flex justify-center items-center w-full gap-2 mt-10">
+      <div className="flex justify-center items-center w-full space-x-2 mt-10">
         {qrcodeOptions.map((option) => (
           <div
             onClick={option.onClick}

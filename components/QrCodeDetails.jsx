@@ -38,7 +38,7 @@ export default function QrCodeDetails({
 
   const DetailsModal = ({ detail }) => (
     <div
-      className={`bg-darkGray p-4 flex flex-col absolute top-8 right-12 rounded-s-lg rounded-br-lg w-[100px] gap-3 z-20 shadow-md ${
+      className={`bg-darkGray p-3 flex flex-col space-y-2 absolute top-8 right-12 rounded-s-lg rounded-br-lg w-24 z-20 shadow-md ${
         openModal ? "opacity-100 scale-100" : "opacity-0 scale-0"
       }`}
     >
@@ -47,7 +47,7 @@ export default function QrCodeDetails({
           className="flex items-center space-x-2"
           onClick={() => handleQrcodepause(detail.id)}
         >
-          <FaRegCirclePause color="#9f9f9f" size={10} />
+          <FaRegCirclePause color="#9f9f9f" size={15} />
           <p className="text-grey text-xs font-semibold">Pause</p>
         </div>
       ) : (
@@ -55,7 +55,7 @@ export default function QrCodeDetails({
           className="flex items-center space-x-2"
           onClick={() => handleQrcoderesume(detail.id)}
         >
-          <FaRegCirclePlay color="#9f9f9f" size={10} />
+          <FaRegCirclePlay color="#9f9f9f" size={15} />
           <p className="text-grey text-xs font-semibold">Resume</p>
         </div>
       )}
@@ -73,15 +73,15 @@ export default function QrCodeDetails({
   return (
     <div
       ref={modalContainer}
-      className="w-full flex justify-between items-center relative overflow-hidden bg-charcoal rounded-xl p-4 gap-2 shadow-lg"
+      className="w-full flex items-center space-x-2 relative overflow-hidden bg-charcoal rounded-xl p-3 shadow-lg"
     >
       <div
-        className={`w-[10px] h-full ${
+        className={`w-3 h-full ${
           detail.status === "Active" ? "bg-kellyGreen" : "bg-red"
         } absolute left-0`}
       />
 
-      <div className="flex justify-center items-center w-[90px] h-[90px]">
+      <div className="flex justify-center items-center w-24">
         <img
           src={src}
           alt="qrcode image"
@@ -89,37 +89,39 @@ export default function QrCodeDetails({
         />
       </div>
 
-      <div className="flex flex-col gap-2">
-        <div className="flex items-center space-x-2">
-          <p className="text-gray-400 text-xs">Name:</p>
-          <span className="text-oxfordBlue text-sm font-semibold">{name}</span>
-        </div>
-        <div className="flex items-center space-x-2">
-          <p className="text-gray-400 text-xs">Type:</p>
-          <span className="text-oxfordBlue text-sm font-semibold">{type}</span>
-        </div>
-        <div className="flex items-center space-x-2">
-          <p className="text-gray-400 text-xs">URL:</p>
-          <span className="text-oxfordBlue text-sm font-semibold">{url}</span>
-        </div>
-      </div>
-
-      <div className="flex flex-col gap-5">
-        <div className="flex justify-end items-center space-x-3">
-          <div className="w-[30px] h-[30px] rounded-md border border-gray-400 flex justify-center items-center p-1">
-            <CiEdit color="#fff" />
+      <div className="w-full flex justify-between items-center">
+        <div className="flex flex-col space-y-2 text-white">
+          <div className="flex items-center space-x-2">
+            <p className="text-xs text-slate-400">Name:</p>
+            <span className="text-sm font-semibold">{name}</span>
           </div>
-          <div className="w-[30px] h-[30px] rounded-md border border-gray-400 flex justify-center items-center p-1">
-            <SlOptions
-              onClick={() => setOpenModal((prev) => !prev)}
-              color="#fff"
-            />
+          <div className="flex items-center space-x-2">
+            <p className="text-xs text-slate-400">Type:</p>
+            <span className="text-sm font-semibold">{type}</span>
+          </div>
+          <div className="flex items-center space-x-2">
+            <p className="text-xs text-slate-400">URL:</p>
+            <span className="text-sm font-semibold">{url}</span>
           </div>
         </div>
 
-        <button className="bg-red rounded-md text-white px-4 py-2 text-xs">
-          Details
-        </button>
+        <div className="flex flex-col space-y-5">
+          <div className="flex justify-end items-center space-x-3">
+            <div className="w-[30px] h-[30px] rounded-md border border-gray-400 flex justify-center items-center p-1">
+              <CiEdit color="#fff" />
+            </div>
+            <div className="w-[30px] h-[30px] rounded-md border border-gray-400 flex justify-center items-center p-1">
+              <SlOptions
+                onClick={() => setOpenModal((prev) => !prev)}
+                color="#fff"
+              />
+            </div>
+          </div>
+
+          <button className="bg-red rounded-md text-white px-4 py-2 text-xs">
+            Details
+          </button>
+        </div>
       </div>
       <DetailsModal detail={detail} />
     </div>

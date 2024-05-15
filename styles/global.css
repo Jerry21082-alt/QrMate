@@ -85,6 +85,6 @@ body {
 #scroll {
   scroll-snap-type: mandatory;
   overflow-y: scroll;
-  max-height: 100%;
+  height: 100%;
 }
 
