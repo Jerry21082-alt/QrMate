@@ -56,8 +56,6 @@ export default function page() {
 
   return (
     <Wrapper>
-      <Nav />
-
       <div className="flex justify-between items-center mt-14 w-full">
         <button
           onClick={goBack}

@@ -25,7 +25,7 @@ export default function Menu({ navRef }) {
   return (
     <div
       ref={navRef}
-      className={`fixed w-3/4 h-full top-0 right-0 z-10 py-10 px-5 bg-black ${
+      className={`fixed w-3/4 h-full top-0 right-0 z-[50] py-10 px-5 bg-black ${
         toggleBar ? "open-menu" : "close-menu"
       }`}
     >

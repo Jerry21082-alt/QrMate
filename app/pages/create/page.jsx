@@ -1,6 +1,5 @@
 "use client";
 
-import Nav from "@/components/Nav";
 import Wrapper from "@/components/Wrapper";
 import { pdf, share, ticket, website } from "@/public";
 import Image from "next/image";
@@ -18,7 +17,7 @@ const selectQrcode = [
 
 export default function CreatePage() {
   const [selectFormat, setSelectFormat] = useState(0);
-  const { regenerateQrcode, headingTxt, type, setType } = exportContext();
+  const { regenerateQrcode, type, setType } = exportContext();
 
   const handleSelectFormat = (id, type) => {
     setSelectFormat(id);
@@ -34,7 +33,6 @@ export default function CreatePage() {
 
   return (
     <Wrapper>
-      <Nav />
       <div className="flex justify-between items-center mt-14">
         <button
           onClick={handleCreateCancel}

@@ -81,101 +81,101 @@ export default function Home() {
   };
 
   return (
-    <div className="relative">
-      <Nav />
-      <Wrapper>
-        <section className="mt-14 bg-black z-50">
-          <h1 className="text-center font-semibold my-5 text-2xl text-white">
-            Your QR codes
-          </h1>
+    <Wrapper className="fixed top-0 left-0 right-0 p-2 h-screen bg-snow z-[200]">
+      <section className="mt-14 bg-black z-50 ">
+        <h1 className="text-center font-semibold my-5 text-2xl text-white">
+          Your QR codes
+        </h1>
 
-          <div className="flex flex-wrap justify-between items-center w-full mt-10">
-            {Object.values(filterButtonsText).map((text, index) => (
-              <button
-                key={text}
-                className={`${
-                  filterItems === text
-                    ? "bg-red text-white"
-                    : "bg-darkGray text-grey"
-                } w-[100px] py-4 px-5 rounded-md`}
-                onClick={() => handleFilterChange(text)}
-              >
-                {text}
-              </button>
-            ))}
-          </div>
+        <div className="flex flex-wrap justify-between items-center w-full mt-10">
+          {Object.values(filterButtonsText).map((text, index) => (
+            <button
+              key={text}
+              className={`${
+                filterItems === text
+                  ? "bg-red text-white"
+                  : "bg-darkGray text-grey"
+              } w-[100px] py-4 px-5 rounded-md`}
+              onClick={() => handleFilterChange(text)}
+            >
+              {text}
+            </button>
+          ))}
+        </div>
 
-          <div className="flex items-center justify-between mt-8 space-x-3 p-2 rounded-md border border-grey">
-            <FiSearch size={30} color="#9f9f9f" />
-            <input
-              placeholder="Search for QR code"
-              className="w-full bg-transparent outline-none border-none text-white"
+        <div className="flex items-center justify-between mt-8 space-x-3 p-4 rounded-md border border-grey">
+          <FiSearch size={30} color="#9f9f9f" />
+          <input
+            placeholder="Search for QR code"
+            className="w-full bg-transparent outline-none border-none text-white"
+          />
+        </div>
+
+        <div className="my-5 w-full">
+          <div className="flex justify-between items-center">
+            <div className="flex items-center">
+              <h3 className="font-semibold text-grey">
+                {filterItems} QR Codes
+              </h3>
+              <span className="font-semibold text-red">{`(${
+                isMounted ? filteredItems.length : 0
+              })`}</span>
+            </div>
+            <CiCalendarDate
+              size={30}
+              color="#CA2828"
+              onClick={() => setToggleCalendar((prev) => !prev)}
             />
           </div>
+        </div>
+        <UseCalendar
+          toggleCalendar={toggleCalendar}
+          setToggleCalendar={setToggleCalendar}
+          setSelectedDate={setSelectedDate}
+          selectedDate={selectedDate}
+        />
+      </section>
 
-          <div className="my-5 w-full">
-            <div className="flex justify-between items-center">
-              <div className="flex items-center">
-                <h3 className="font-semibold text-grey">
-                  {filterItems} QR Codes
-                </h3>
-                <span className="font-semibold text-red">{`(${
-                  isMounted ? filteredItems.length : 0
-                })`}</span>
+      <div
+        id="scroll"
+        className="w-full max-h-[500px] overscroll-contain"
+      >
+        {qrcodes.length && isMounted ? (
+          <div className="w-full flex flex-col justify-start">
+            {filteredItems.map((detail, i) => (
+              <div key={i} className="pb-3">
+                <QrCodeDetails
+                  type={detail.type}
+                  url={
+                    detail.url.length > 10
+                      ? `${detail.url.substring(0, 10)}...`
+                      : detail.url
+                  }
+                  src={detail.src}
+                  name={
+                    detail.name.length > 10
+                      ? `${detail.name.substring(0, 10)}...`
+                      : detail.name
+                  }
+                  detail={detail}
+                  handleQrcodepause={handleQrcodepause}
+                  handleQrcoderesume={handleQrcoderesume}
+                  handleDeleteQrcode={handleDeleteQrcode}
+                />
               </div>
-              <CiCalendarDate
-                size={30}
-                color="#CA2828"
-                onClick={() => setToggleCalendar((prev) => !prev)}
-              />
-            </div>
+            ))}
           </div>
-          <UseCalendar
-            toggleCalendar={toggleCalendar}
-            setToggleCalendar={setToggleCalendar}
-            setSelectedDate={setSelectedDate}
-            selectedDate={selectedDate}
-          />
-
-          <div >
-            {qrcodes.length && isMounted ? (
-              <div className="h-full w-full flex flex-col justify-start max-h-[500px]" id="scroll">
-                {filteredItems.map((detail, i) => (
-                  <div key={i} className="pb-3">
-                    <QrCodeDetails
-                      type={detail.type}
-                      url={
-                        detail.url.length > 10
-                          ? `${detail.url.substring(0, 10)}...`
-                          : detail.url
-                      }
-                      src={detail.src}
-                      name={
-                        detail.name.length > 10
-                          ? `${detail.name.substring(0, 10)}...`
-                          : detail.name
-                      }
-                      detail={detail}
-                      handleQrcodepause={handleQrcodepause}
-                      handleQrcoderesume={handleQrcoderesume}
-                      handleDeleteQrcode={handleDeleteQrcode}
-                    />
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="flex flex-col justify-center items-center mt-10">
-                <h3 className="text-grey font-semibold text-lg my-2">
-                  No active Qrcode
-                </h3>
-                <Link href="/pages/create">
-                  <FiPlusCircle size={40} color="#fff" />
-                </Link>
-              </div>
-            )}
+        ) : (
+          <div className="flex flex-col justify-center items-center mt-10">
+            <h3 className="text-grey font-semibold text-lg my-2">
+              No active Qrcode
+            </h3>
+            <Link href="/pages/create mt-8 block">
+              <FiPlusCircle size={40} color="#fff" />
+            </Link>
           </div>
-        </section>
-      </Wrapper>
-    </div>
+        )}
+      </div>
+    </Wrapper>
   );
 }
