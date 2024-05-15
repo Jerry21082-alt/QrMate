@@ -14,7 +14,7 @@ import { CiCalendarDate } from "react-icons/ci";
 import QrCodeDetails from "@/components/QrCodeDetails";
 import { exportContext } from "@/components/useStateContext/StateContext";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const filterButtonsText = {
   active: "Active",
@@ -28,6 +28,8 @@ export default function Home() {
   const [toggleCalendar, setToggleCalendar] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
   const [isMounted, setIsMounted] = useState(false);
+
+  const ref = useRef(null);
 
   useEffect(() => {
     setIsMounted(true);
@@ -43,6 +45,12 @@ export default function Home() {
 
     return isfilterMatch && isDateMatch;
   });
+
+  useEffect(() => {
+    if (ref.current) {
+      ref.current.scrollTop = ref.current.scrollHeight;
+    }
+  }, [filteredItems]);
 
   const handleQrcodepause = (id) => {
     const target = qrcodes.map((target) => {
@@ -81,7 +89,7 @@ export default function Home() {
   };
 
   return (
-    <Wrapper className="fixed top-0 left-0 right-0 p-2 h-screen bg-snow z-[200]">
+    <Wrapper className="h-screen fixed">
       <section className="mt-14 bg-black z-50 ">
         <h1 className="text-center font-semibold my-5 text-2xl text-white">
           Your QR codes
@@ -103,7 +111,7 @@ export default function Home() {
           ))}
         </div>
 
-        <div className="flex items-center justify-between mt-8 space-x-3 p-4 rounded-md border border-grey">
+        <div className="flex items-center justify-between mt-8 space-x-3 p-2 rounded-md border border-grey">
           <FiSearch size={30} color="#9f9f9f" />
           <input
             placeholder="Search for QR code"
@@ -136,12 +144,9 @@ export default function Home() {
         />
       </section>
 
-      <div
-        id="scroll"
-        className="w-full max-h-[500px] overscroll-contain"
-      >
+      <div id="scroll" className="h-[300px]" ref={ref}>
         {qrcodes.length && isMounted ? (
-          <div className="w-full flex flex-col justify-start">
+          <div className="h-full w-full flex flex-col justify-start">
             {filteredItems.map((detail, i) => (
               <div key={i} className="pb-3">
                 <QrCodeDetails
