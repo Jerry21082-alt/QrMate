@@ -33,46 +33,12 @@ export default function CreatePage() {
 
   return (
     <Wrapper>
-      <div className="flex justify-between items-center mt-14">
-        <button
-          onClick={handleCreateCancel}
-          className="w-[120px] h-[40px] rounded-md bg-white py-1 px-4 flex justify-center items-center space-x-2"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 30 30"
-            width="20px"
-            height="20px"
-          >
-            {" "}
-            <path d="M 7 4 C 6.744125 4 6.4879687 4.0974687 6.2929688 4.2929688 L 4.2929688 6.2929688 C 3.9019687 6.6839688 3.9019687 7.3170313 4.2929688 7.7070312 L 11.585938 15 L 4.2929688 22.292969 C 3.9019687 22.683969 3.9019687 23.317031 4.2929688 23.707031 L 6.2929688 25.707031 C 6.6839688 26.098031 7.3170313 26.098031 7.7070312 25.707031 L 15 18.414062 L 22.292969 25.707031 C 22.682969 26.098031 23.317031 26.098031 23.707031 25.707031 L 25.707031 23.707031 C 26.098031 23.316031 26.098031 22.682969 25.707031 22.292969 L 18.414062 15 L 25.707031 7.7070312 C 26.098031 7.3170312 26.098031 6.6829688 25.707031 6.2929688 L 23.707031 4.2929688 C 23.316031 3.9019687 22.682969 3.9019687 22.292969 4.2929688 L 15 11.585938 L 7.7070312 4.2929688 C 7.5115312 4.0974687 7.255875 4 7 4 z" />
-          </svg>{" "}
-          <p className="text-sm">Cancel</p>
-        </button>
+      {/* <div className="flex justify-between items-center mt-14">
+        
+       
+      </div> */}
 
-        <Link
-          href={{
-            query: { type: type },
-            pathname: `/pages/previewQrcode/${type}`,
-          }}
-          className="rounded-md bg-red py-1 px-4 flex justify-center items-center space-x-2 w-[120px] h-[40px]"
-        >
-          <p className="text-white text-sm">Next</p>
-
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20"
-            id="chevron"
-            width={35}
-            height={35}
-            fill="#FFFFFF"
-          >
-            <path d="M11 10L7.859 6.58a.695.695 0 0 1 0-.978.68.68 0 0 1 .969 0l3.83 3.908a.697.697 0 0 1 0 .979l-3.83 3.908a.68.68 0 0 1-.969 0 .695.695 0 0 1 0-.978L11 10z"></path>
-          </svg>
-        </Link>
-      </div>
-
-      <h1 className="text-center text-xl font-semibold mt-5 text-white">
+      <h1 className="text-center text-xl font-semibold text-white mt-14">
         Create QRcode
       </h1>
 
@@ -99,14 +65,14 @@ export default function CreatePage() {
         Select your QR code type
       </h2>
 
-      <div className="flex justify-center items-center flex-wrap mt-8">
+      <div className="flex justify-center items-center flex-wrap mt-8 w-full">
         {selectQrcode.map((select, i) => (
           <div
             onClick={() => handleSelectFormat(i, select.type)}
             key={i}
             className={`${
               selectFormat === i ? "bg-red" : "bg-grey"
-            } w-[150px] rounded-md flex flex-col items-center justify-center py-4 mr-4 mt-4 border`}
+            } w-36 rounded-md flex flex-col items-center justify-center py-4 m-2 border`}
           >
             <div className="flex justify-center items-center w-[30px]">
               <Image src={select.icon} alt="qrcode format icons" />
@@ -120,6 +86,16 @@ export default function CreatePage() {
             </p>
           </div>
         ))}
+      </div>
+
+      <div className="w-full fixed left-0 p-2 bottom-10">
+        <Link
+          href={{
+            query: { type: type },
+            pathname: `/pages/previewQrcode/${type}`,
+          }}
+          className="rounded-md bg-red p-4 flex justify-center items items-center w-full text-white"
+        >Next</Link>
       </div>
     </Wrapper>
   );

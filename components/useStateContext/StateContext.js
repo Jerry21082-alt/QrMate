@@ -53,7 +53,7 @@ export default function StateContext({ children }) {
 
     QRcode.toDataURL(url, {
       color: {
-        light: bg,
+        light: '#FFFFFF',
         dark: col,
       },
 

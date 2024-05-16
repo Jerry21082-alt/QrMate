@@ -118,9 +118,9 @@ export default function page() {
       <div className="flex justify-center w-full">
         {showQrcode && (
           <div
-            className={`flex flex-col justify-center items-center bg-lightCulture p-5 rounded-xl shadow-md`}
+            className={`flex flex-col justify-center items-center bg-white p-4 rounded-xl shadow-md`}
           >
-            <h3 className="text-white text-lg font-semibold">Preview</h3>
+            <h3 className="text-black text-lg font-semibold">Preview</h3>
             <img src={src} alt="qrcode image" />
           </div>
         )}

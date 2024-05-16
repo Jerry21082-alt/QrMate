@@ -89,7 +89,7 @@ export default function Home() {
   };
 
   return (
-    <Wrapper className="h-screen fixed">
+    <Wrapper className="fixed h-screen">
       <section className="mt-14 bg-black z-50 ">
         <h1 className="text-center font-semibold my-5 text-2xl text-white">
           Your QR codes
@@ -144,7 +144,7 @@ export default function Home() {
         />
       </section>
 
-      <div id="scroll" className="max-h-[500px]" ref={ref}>
+      <div id="scroll" className="max-h-[50vh]" ref={ref}>
         {qrcodes.length && isMounted ? (
           <div className="h-full w-full flex flex-col justify-start">
             {filteredItems.map((detail, i) => (

@@ -25,7 +25,7 @@ export default function InputForm({
           />
         </div>
 
-        <div className="flex flex-col space-y-2">
+        <div className="flex flex-col space-y-2 mt-2">
           <label htmlFor="url" className="text-grey">
             {qrCodeType === "website"
               ? "Enter website URL"

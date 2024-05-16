@@ -73,7 +73,7 @@ export default function QrCodeDetails({
   return (
     <div
       ref={modalContainer}
-      className="w-full flex items-center space-x-2 relative overflow-hidden bg-charcoal rounded-xl p-3 shadow-lg"
+      className="w-full flex items-center space-x-2 relative overflow-hidden bg-charcoal rounded-xl p-4"
     >
       <div
         className={`w-3 h-full ${
