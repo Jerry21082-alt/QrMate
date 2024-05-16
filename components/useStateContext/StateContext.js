@@ -22,6 +22,7 @@ export default function StateContext({ children }) {
   const [qrcodeName, setQrcodeName] = useState("");
   const [showQrcode, setShowQrcode] = useState(false);
   const [showSpinner, setShowSpinner] = useState(false);
+
   const [qrcodes, setQrcodes] = LocalStorage("codes", []);
 
   const [customizeQrcode, setCustomizeQrcode] = useState({

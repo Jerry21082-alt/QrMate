@@ -38,17 +38,14 @@ export default function Nav() {
     <nav className="fixed h-14 top-0 left-0 w-full px-4 py-2 flex justify-between items-center bg-charcoal z-50">
       <Link href="/pages/home" className="flex justify-center items-center">
         <div className="flex justify-center items-center w-[50px] h-[50px] text-white">
-          {/* <Image src={`/`} alt="logo" width={500} height={500}/> */}
           logo
         </div>
-
       </Link>
-      <div>
-        <CgMenuRight
-          size={20}
-          color="#fff"
-          onClick={() => setToggleBar((prevState) => !prevState)}
-        />
+      <div
+        className="w-7 h-7 flex justify-center items-center"
+        onClick={() => setToggleBar((prevState) => !prevState)}
+      >
+        <div className="burger"/>
       </div>
 
       <Menu navRef={navRef} />

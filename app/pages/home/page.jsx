@@ -1,13 +1,8 @@
 "use client";
 
 import Wrapper from "@/components/Wrapper";
-import Image from "next/image";
-import { user } from "@/public";
-import Nav from "@/components/Nav";
 import UseCalendar from "@/components/UseCalendar";
 
-import { MdOutlineInfo } from "react-icons/md";
-import { IoSettingsOutline } from "react-icons/io5";
 import { FiSearch, FiPlusCircle } from "react-icons/fi";
 import { CiCalendarDate } from "react-icons/ci";
 
@@ -28,6 +23,8 @@ export default function Home() {
   const [toggleCalendar, setToggleCalendar] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
   const [isMounted, setIsMounted] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
+  const [search, setSearch] = useState("");
 
   const ref = useRef(null);
 
@@ -42,8 +39,11 @@ export default function Home() {
   const filteredItems = qrcodes.filter((item) => {
     const isDateMatch = !selectedDate || item.date === selectedDate;
     const isfilterMatch = filterItems === "All" || item.status === filterItems;
+    const isSearchedMatch = item.name
+      .toLowerCase()
+      .includes(search.toLocaleLowerCase());
 
-    return isfilterMatch && isDateMatch;
+    return isfilterMatch && isDateMatch && isSearchedMatch;
   });
 
   useEffect(() => {
@@ -62,7 +62,7 @@ export default function Home() {
     });
 
     setQrcodes(target);
-    console.log(qrcodes);
+    setOpenModal(false);
   };
 
   const handleQrcoderesume = (id) => {
@@ -75,6 +75,7 @@ export default function Home() {
     });
 
     setQrcodes(target);
+    setOpenModal(false);
   };
 
   const handleDeleteQrcode = (itemId) => {
@@ -85,6 +86,7 @@ export default function Home() {
     if (itemToRemove !== -1) {
       updatedItems.splice(itemToRemove, 1);
       setQrcodes(updatedItems);
+      setOpenModal(false);
     }
   };
 
@@ -115,6 +117,8 @@ export default function Home() {
           <FiSearch size={30} color="#9f9f9f" />
           <input
             placeholder="Search for QR code"
+            value={search}
+            onChange={(ev) => setSearch(ev.target.value)}
             className="w-full bg-transparent outline-none border-none text-white"
           />
         </div>
@@ -151,6 +155,7 @@ export default function Home() {
               <div key={i} className="pb-3">
                 <QrCodeDetails
                   type={detail.type}
+                  codeId={detail.id}
                   url={
                     detail.url.length > 10
                       ? `${detail.url.substring(0, 10)}...`
@@ -166,6 +171,8 @@ export default function Home() {
                   handleQrcodepause={handleQrcodepause}
                   handleQrcoderesume={handleQrcoderesume}
                   handleDeleteQrcode={handleDeleteQrcode}
+                  openModal={openModal}
+                  setOpenModal={setOpenModal}
                 />
               </div>
             ))}
