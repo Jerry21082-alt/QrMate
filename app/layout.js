@@ -7,8 +7,8 @@ import StateContext from "@/components/useStateContext/StateContext";
 import GeneralMsg from "@/components/GeneralMsg";
 
 export const metaData = {
-  title: "IQcode",
-  description: "create and save qrcodes like never before!",
+  title: "scanMate",
+  description: "create your create code without hastle!",
 };
 
 const RootLayout = ({ children }) => {

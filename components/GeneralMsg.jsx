@@ -8,38 +8,20 @@ import { exportContext } from "./useStateContext/StateContext";
 export default function GeneralMsg({ onClose }) {
   const { showMsg, setShowMsg, generalMsg } = exportContext();
 
-  const generalMsgContainer = useRef();
-
-  const handleOutsideClick = (e) => {
-    const onClose = () => {
-      setShowMsg(false);
-    };
-
-    if (
-      generalMsgContainer.current &&
-      !generalMsgContainer.current.contains(e.target)
-    ) {
-      onClose();
-    }
-  };
-
   useEffect(() => {
-    if (showMsg) {
-      document.addEventListener("click", handleOutsideClick);
-    }
+    const timer = setInterval(() => {
+      setShowMsg(false);
+    }, 3000);
 
-    return () => {
-      document.removeEventListener("click", handleOutsideClick);
-    };
-  }, [showMsg, onClose]);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <>
       <div
-        ref={generalMsgContainer}
-        className={`bg-charcoal rounded-lg flex items-center justify-center w-[70%] p-4 fixed top-1/2 left-1/2 tranform translate-x-[-50%] translate-y-[-50%] z-20 ${
-          showMsg ? "opacity-100 scale-100" : "opacity-0 scale-0"
-        } transition-all ease 150ms`}
+        className={`msg-modal bg-charcoal rounded-lg flex items-center justify-center w-[70%] z-20 p-4 ${
+          showMsg ? "open-msg" : "close-msg"
+        }`}
       >
         <div className="flex flex-col justify-center items-center">
           <TiWarning size={50} color="yellow" />

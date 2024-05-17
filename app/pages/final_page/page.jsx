@@ -1,10 +1,10 @@
 "use client";
 
-import Nav from "@/components/Nav";
 import Wrapper from "@/components/Wrapper";
 import { useRouter } from "next/navigation";
 import { RotatingLines } from "react-loader-spinner";
 import { exportContext } from "@/components/useStateContext/StateContext";
+import { useEffect, useState } from "react";
 
 export default function page() {
   const {
@@ -16,6 +16,12 @@ export default function page() {
     saveToHistory,
     qrcodeHistory,
   } = exportContext();
+
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const router = useRouter();
   const goBack = () => {
@@ -103,9 +109,11 @@ export default function page() {
 
       <div className="flex justify-center w-full">
         <div
-          className={`flex flex-col justify-center items-center bg-white p-4 rounded-xl w-2/3`}
+          className={`code flex flex-col justify-center items-center bg-white p-4 rounded-xl w-2/3 ${
+            isMounted ? "mount-code" : ""
+          }`}
         >
-          <img src={src} alt="qrcode image" className="h-full w-full"/>
+          <img src={src} alt="qrcode image" className="h-full w-full" />
         </div>
       </div>
 

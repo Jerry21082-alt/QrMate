@@ -135,3 +135,31 @@ body {
   transform: translate3d(0, 0, 0);
   transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
 }
+
+.open-msg {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.25s ease-in-out;
+}
+
+.close-msg {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease-in-out;
+}
+
+.msg-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.code {
+  transform: scale(0);
+  transition: transform 0.45s ease;
+}
+
+.mount-code {
+  transform: scale(1);
+}

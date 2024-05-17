@@ -43,7 +43,7 @@ export default function UseCalendar({
         toggleCalendar ? "calendar-opened" : "calendar-closed"
       }`}
     >
-      <div className="bg-red rounded-md text-white p-4 absolute -top-5">
+      <div className="bg-red rounded-md text-white p-4 absolute -top-5 left-2">
         <Calendar value={date} onClickDay={handleDateSelect} />
       </div>
     </div>

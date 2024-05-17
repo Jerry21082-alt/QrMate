@@ -41,19 +41,47 @@ export default function Menu({ navRef }) {
 
       <ul className="flex flex-col justify-center items-center h-full space-y-8 w-full">
         <li onClick={() => navigate("/pages/home")}>
-          <span className="text-white text-2xl">Home</span>
+          <span
+            className="text-2xl"
+            style={{
+              color: pathname === "/pages/home" ? "#CA2828" : "#FFFFFF",
+            }}
+          >
+            Home
+          </span>
         </li>
 
         <li onClick={() => navigate("/pages/create")}>
-          <span className="text-white text-2xl">Create Qr</span>
+          <span
+            className="text-2xl"
+            style={{
+              color: pathname === "/pages/create" ? "#CA2828" : "#FFFFFF",
+            }}
+          >
+            Create Qr
+          </span>
         </li>
 
         <li onClick={() => navigate("/pages/home")}>
-          <span className="text-white text-2xl">Notifications</span>
+          <span
+            className="text-2xl"
+            style={{
+              color: pathname === "/pages/notification" ? "#CA2828" : "#FFFFFF",
+            }}
+          >
+            Notifications
+          </span>
         </li>
 
         <li onClick={() => navigate("/pages/home")}>
-          <span className="text-white text-2xl">User</span>
+          <span
+            className="text-2xl"
+            style={{
+              color: pathname === "/pages/user" ? "#CA2828" : "#FFFFFF",
+            }}
+          >
+            User
+          </span>
         </li>
       </ul>
     </div>

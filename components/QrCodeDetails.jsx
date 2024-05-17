@@ -11,13 +11,12 @@ export default function QrCodeDetails({
   name,
   type,
   detail,
-  handleQrcodepause,
-  handleQrcoderesume,
-  handleDeleteQrcode,
   codeId,
 }) {
   const [openModal, setOpenModal] = useState(false);
   const modalContainer = useRef();
+
+  const { qrcodes, setQrcodes } = exportContext();
 
   const onClose = () => {
     setOpenModal(false);
@@ -37,13 +36,48 @@ export default function QrCodeDetails({
     return () => document.removeEventListener("click", handleClickOutside);
   }, [openModal, onClose]);
 
+  const handleDeleteQrcode = (itemId) => {
+    const updatedItems = [...qrcodes];
+
+    const itemToRemove = updatedItems.findIndex((item) => item.id === itemId);
+
+    if (itemToRemove !== -1) {
+      updatedItems.splice(itemToRemove, 1);
+      setQrcodes(updatedItems);
+      setOpenModal(false);
+    }
+  };
+
+  const handleQrcodepause = (id) => {
+    const target = qrcodes.map((target) => {
+      if (target.id === id) {
+        return { ...target, status: "Paused" };
+      }
+
+      return target;
+    });
+
+    setQrcodes(target);
+    setOpenModal(false);
+  };
+
+  const handleQrcoderesume = (id) => {
+    const target = qrcodes.map((target) => {
+      if (target.id === id) {
+        return { ...target, status: "Active" };
+      }
+
+      return target;
+    });
+
+    setQrcodes(target);
+    setOpenModal(false);
+  };
+
   return (
-    <div
-      ref={modalContainer}
-      className="w-full flex items-center space-x-2 relative overflow-hidden bg-charcoal rounded-xl p-4"
-    >
+    <div className="w-full flex items-center space-x-2 relative overflow-hidden bg-charcoal rounded-xl p-4">
       <div
-        className={`w-3 h-full ${
+        className={`w-2 h-full ${
           detail.status === "Active" ? "bg-kellyGreen" : "bg-red"
         } absolute left-0`}
       />
@@ -93,6 +127,7 @@ export default function QrCodeDetails({
       </div>
 
       <div
+        ref={modalContainer}
         className={`bg-darkGray p-3 flex flex-col space-y-2 absolute top-6 right-12 rounded-s-lg rounded-br-lg w-16 z-20 shadow-md ${
           openModal ? "open-modal" : "close-modal"
         }`}

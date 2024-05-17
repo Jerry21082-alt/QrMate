@@ -52,44 +52,6 @@ export default function Home() {
     }
   }, [filteredItems]);
 
-  const handleQrcodepause = (id) => {
-    const target = qrcodes.map((target) => {
-      if (target.id === id) {
-        return { ...target, status: "Paused" };
-      }
-
-      return target;
-    });
-
-    setQrcodes(target);
-    setOpenModal(false);
-  };
-
-  const handleQrcoderesume = (id) => {
-    const target = qrcodes.map((target) => {
-      if (target.id === id) {
-        return { ...target, status: "Active" };
-      }
-
-      return target;
-    });
-
-    setQrcodes(target);
-    setOpenModal(false);
-  };
-
-  const handleDeleteQrcode = (itemId) => {
-    const updatedItems = [...qrcodes];
-
-    const itemToRemove = updatedItems.findIndex((item) => item.id === itemId);
-
-    if (itemToRemove !== -1) {
-      updatedItems.splice(itemToRemove, 1);
-      setQrcodes(updatedItems);
-      setOpenModal(false);
-    }
-  };
-
   return (
     <Wrapper className="fixed h-screen">
       <section className="mt-14 bg-black z-50 ">
@@ -129,7 +91,7 @@ export default function Home() {
               <h3 className="font-semibold text-grey">
                 {filterItems} QR Codes
               </h3>
-              <span className="font-semibold text-red">{`(${
+              <span className="font-semibold text-grey">{`(${
                 isMounted ? filteredItems.length : 0
               })`}</span>
             </div>
@@ -168,9 +130,6 @@ export default function Home() {
                       : detail.name
                   }
                   detail={detail}
-                  handleQrcodepause={handleQrcodepause}
-                  handleQrcoderesume={handleQrcoderesume}
-                  handleDeleteQrcode={handleDeleteQrcode}
                   openModal={openModal}
                   setOpenModal={setOpenModal}
                 />
