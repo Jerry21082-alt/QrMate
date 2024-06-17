@@ -34,7 +34,7 @@ export default function SignUpPage() {
 
         <SignInForm />
 
-        <div className="relative mt-6 w-full flex flex-col justify-center items-center"></div>
+        {/* <div className="relative mt-6 w-full flex flex-col justify-center items-center"></div> */}
         <p className="text-center text-sm mt-5 text-oxfordBlue">
           By clicking 'Sign in' you agree to Dusk's{" "}
           <span className="font-semibold text-tuftsBlue">Privacy Policy</span>{" "}

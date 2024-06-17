@@ -59,25 +59,27 @@ export default function CreatePage() {
         Create QRcode
       </h1>
 
-      <div className="flex items-center justify-between mt-8 space-x-3 bg-lightCulture p-2 rounded-md border border-culture">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          version="1.1"
-          viewBox="-5.0 -10.0 110.0 135.0"
-          width={35}
-          fill="#fff"
-        >
-          <g>
-            <path d="m47.398 78.398c-8.3008 0-16.102-3.1992-21.898-9.1016-5.8984-5.8008-9.1016-13.602-9.1016-21.898 0-8.3008 3.1992-16.102 9.1016-21.898 5.8984-5.8008 13.602-9.1016 21.898-9.1016 8.3008 0 16.102 3.1992 21.898 9.1016 5.8984 5.8984 9.1016 13.602 9.1016 21.898 0 8.3008-3.1992 16.102-9.1016 21.898-5.7969 5.9023-13.598 9.1016-21.898 9.1016zm0-56.797c-6.8984 0-13.398 2.6992-18.301 7.6016-4.8984 4.8984-7.6016 11.398-7.6016 18.301 0 6.8984 2.6992 13.398 7.6016 18.301 4.8984 4.8984 11.398 7.6016 18.301 7.6016 6.8984 0 13.398-2.6992 18.301-7.6016 4.8984-4.8984 7.6016-11.398 7.6016-18.301s-2.6992-13.504-7.5-18.402c-4.9023-4.8008-11.402-7.5-18.402-7.5z" />
-            <path d="m65.746 69.336 3.6055-3.6055 14.141 14.141-3.6055 3.6055z" />
-          </g>
-        </svg>{" "}
-        <input
-          placeholder="Search QR code type"
-          value={searchTypes}
-          onChange={(ev) => setSearchTypes(ev.target.value)}
-          className="w-full bg-transparent outline-none border-none text-white"
-        />
+      <div className="w-full flex justify-center">
+        <div className="w-full md:w-3/4 flex items-center justify-between mt-8 space-x-3 bg-lightCulture p-2 rounded-md border border-culture">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            version="1.1"
+            viewBox="-5.0 -10.0 110.0 135.0"
+            width={35}
+            fill="#fff"
+          >
+            <g>
+              <path d="m47.398 78.398c-8.3008 0-16.102-3.1992-21.898-9.1016-5.8984-5.8008-9.1016-13.602-9.1016-21.898 0-8.3008 3.1992-16.102 9.1016-21.898 5.8984-5.8008 13.602-9.1016 21.898-9.1016 8.3008 0 16.102 3.1992 21.898 9.1016 5.8984 5.8984 9.1016 13.602 9.1016 21.898 0 8.3008-3.1992 16.102-9.1016 21.898-5.7969 5.9023-13.598 9.1016-21.898 9.1016zm0-56.797c-6.8984 0-13.398 2.6992-18.301 7.6016-4.8984 4.8984-7.6016 11.398-7.6016 18.301 0 6.8984 2.6992 13.398 7.6016 18.301 4.8984 4.8984 11.398 7.6016 18.301 7.6016 6.8984 0 13.398-2.6992 18.301-7.6016 4.8984-4.8984 7.6016-11.398 7.6016-18.301s-2.6992-13.504-7.5-18.402c-4.9023-4.8008-11.402-7.5-18.402-7.5z" />
+              <path d="m65.746 69.336 3.6055-3.6055 14.141 14.141-3.6055 3.6055z" />
+            </g>
+          </svg>{" "}
+          <input
+            placeholder="Search QR code type"
+            value={searchTypes}
+            onChange={(ev) => setSearchTypes(ev.target.value)}
+            className="w-full bg-transparent outline-none border-none text-white"
+          />
+        </div>
       </div>
 
       <h2 className="text-center text-lg mt-5 text-white">
@@ -91,7 +93,7 @@ export default function CreatePage() {
             key={i}
             className={`${
               selectFormat === i ? "bg-red" : "bg-grey"
-            } w-36 rounded-md flex flex-col items-center justify-center py-4 m-2 border`}
+            } w-36 md:w-1/3 rounded-md flex flex-col items-center justify-center py-4 m-2 border`}
           >
             <div className="w-8 h-8">
               <div dangerouslySetInnerHTML={{ __html: select.icon }} />
@@ -107,13 +109,13 @@ export default function CreatePage() {
         ))}
       </div>
 
-      <div className="w-full mt-12">
+      <div className="w-full mt-12 md:mt-16 flex justify-center">
         <Link
           href={{
             query: { type: type },
             pathname: `/pages/previewQrcode/${type}`,
           }}
-          className="rounded-md bg-red p-4 flex justify-center items items-center w-full text-white"
+          className="rounded-md bg-red p-4 flex justify-center items items-center w-full md:w-3/4 text-white"
         >
           Next
         </Link>

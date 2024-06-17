@@ -7,7 +7,6 @@ const USER_NAME_REGEX = /^[A-Za-z]+(?:\s[A-Za-z]+)+$/;
 const USER_MAIL_REGEX = /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/;
 const USER_PASSWORD_REGEX = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/;
 
-
 import { exportContext } from "./useStateContext/StateContext";
 
 export default function SignInForm() {
@@ -21,7 +20,7 @@ export default function SignInForm() {
   const passwordRef = useRef();
   const emailRef = useRef();
 
-  const router = useRouter()
+  const router = useRouter();
 
   const [signInInputs, setSignInInputs] = useState({
     fullName: "",
@@ -164,7 +163,7 @@ export default function SignInForm() {
     setPasswordMatched(true);
     setShowMsg(false);
     setIsSignup(true);
-    router.push('/pages/home')
+    router.push("/pages/home");
   };
 
   return (
@@ -259,6 +258,7 @@ export default function SignInForm() {
           text={`Sign up`}
           routeText={`pages/signup_page`}
           backgroundStyle={`bg-tuftsBlue text-white`}
+          // disabled={}
         />
       </div>
     </form>

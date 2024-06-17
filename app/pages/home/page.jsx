@@ -54,20 +54,20 @@ export default function Home() {
 
   return (
     <Wrapper className="fixed h-screen">
-      <section className="mt-14 bg-black z-50 ">
-        <h1 className="text-center font-semibold my-5 text-2xl text-white">
+      <section className="mt-14 z-50 ">
+        <h1 className="text-center font-semibold my-5 text-2xl">
           Your QR codes
         </h1>
 
-        <div className="flex justify-between items-center w-full mt-10">
+        <div className="flex justify-between md:justify-start md:space-x-4 items-center w-full mt-10">
           {Object.values(filterButtonsText).map((text, index) => (
             <button
               key={text}
               className={`${
                 filterItems === text
-                  ? "bg-red text-white"
-                  : "bg-darkGray text-grey"
-              } w-[100px] py-4 px-5 rounded-md`}
+                  ? "bg-tuftsBlue text-white"
+                  : "bg-lightBlue text-black"
+              } w-[100px] py-4 px-5 rounded-2xl`}
               onClick={() => handleFilterChange(text)}
             >
               {text}
@@ -81,23 +81,23 @@ export default function Home() {
             placeholder="Search for QR code"
             value={search}
             onChange={(ev) => setSearch(ev.target.value)}
-            className="w-full bg-transparent outline-none border-none text-white"
+            className="w-full bg-transparent outline-none border-none"
           />
         </div>
 
         <div className="my-5 w-full">
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-1">
-              <h3 className="font-semibold text-grey">
+              <h3 className="font-semibold text-charcoal">
                 {filterItems} QR Codes
               </h3>
-              <span className="font-semibold text-grey">{`(${
+              <span className="font-semibold text-charcoal">{`(${
                 isMounted ? filteredItems.length : 0
               })`}</span>
             </div>
             <CiCalendarDate
               size={30}
-              color="#CA2828"
+              color="#000"
               onClick={() => setToggleCalendar((prev) => !prev)}
             />
           </div>

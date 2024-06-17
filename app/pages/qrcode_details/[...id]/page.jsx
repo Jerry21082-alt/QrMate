@@ -15,7 +15,7 @@ export default function page({ params }) {
 
   return (
     <Wrapper>
-      <h1 className="mt-14 text-white text-center">Qrcode Details</h1>
+      <h1 className="mt-14 text-center">Qrcode Details</h1>
       <div className="flex justify-center w-full mt-8 border-grey border-b">
         <div className="w-3/4 overflow-hidden flex items-center jusitfy-center rounded-xl mb-4">
           <img
@@ -30,27 +30,27 @@ export default function page({ params }) {
         <div className="flex flex-col space-y-4">
           <div className="flex items-center space-x-2">
             <h4 className="text-slate-400">NAME:</h4>
-            <span className="text-white">{qrcode_details.name}</span>
+            <span>{qrcode_details.name}</span>
           </div>
 
           <div className="flex items-center space-x-2">
             <h4 className="text-slate-400">TYPE:</h4>
-            <span className="text-white">{qrcode_details.type}</span>
+            <span>{qrcode_details.type}</span>
           </div>
 
           <div className="flex items-center space-x-2">
             <h4 className="text-slate-400">URL:</h4>
-            <span className="text-white">{qrcode_details.url}</span>
+            <span>{qrcode_details.url}</span>
           </div>
 
           <div className="flex items-center space-x-2">
             <h4 className="text-slate-400">DATE:</h4>
-            <span className="text-grey">{qrcode_details.date}</span>
+            <span>{qrcode_details.date}</span>
           </div>
         </div>
 
         <button
-          className="w-full p-2 bg-red rounded-xl text-white mt-11"
+          className="w-full py-2 bg-tuftsBlue rounded text-white mt-11"
           onClick={() => setToggleEdit(true)}
         >
           Edit

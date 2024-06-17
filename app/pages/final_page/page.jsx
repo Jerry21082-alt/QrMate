@@ -109,7 +109,7 @@ export default function page() {
 
       <div className="flex justify-center w-full">
         <div
-          className={`code flex flex-col justify-center items-center bg-white p-4 rounded-xl w-2/3 ${
+          className={`code flex flex-col justify-center items-center bg-white p-4 rounded-xl w-2/3 md:w-1/4 ${
             isMounted ? "mount-code" : ""
           }`}
         >
@@ -122,7 +122,7 @@ export default function page() {
           <div
             onClick={option.onClick}
             key={option.label}
-            className="w-1/3 flex flex-col items-center py-2 px-4 bg-red rounded-md"
+            className="w-1/3 md:w-1/4 flex flex-col items-center py-2 px-4 bg-red rounded-md"
           >
             <div className="w-5 h-5">
               <div dangerouslySetInnerHTML={{ __html: option.icon }} />

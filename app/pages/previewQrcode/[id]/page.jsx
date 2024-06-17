@@ -104,7 +104,7 @@ export default function page() {
         } flex justify-center w-full mt-10`}
       >
         <button
-          className="w-1/2 bg-red rounded-md py-2 px-4 text-white outline-none"
+          className="w-1/2 md:w-1/3 bg-red rounded-md py-2 px-4 text-white outline-none"
           onClick={() => generateQrcode("#e9ecef", "#000")}
         >
           Create QRcode
@@ -118,10 +118,10 @@ export default function page() {
       <div className="flex justify-center w-full">
         {showQrcode && (
           <div
-            className={`flex flex-col justify-center items-center bg-white p-4 rounded-xl shadow-md`}
+            className={`flex flex-col justify-center items-center w-40 md:w-1/3 bg-white p-4 rounded-xl shadow-md`}
           >
             <h3 className="text-black text-lg font-semibold">Preview</h3>
-            <img src={src} alt="qrcode image" />
+            <img src={src} alt="qrcode image" className="w-full h-full"/>
           </div>
         )}
       </div>

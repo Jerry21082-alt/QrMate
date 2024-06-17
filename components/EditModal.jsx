@@ -27,12 +27,12 @@ export default function EditModal({
     });
 
     setQrcodes(updatedItem);
-    setToggleEdit(false)
+    setToggleEdit(false);
   };
 
   return (
     <div
-      className={`fixed bg-charcoal left-0 bottom-0 right-0 p-2 ${
+      className={`fixed bg-oxfordBlue left-0 bottom-0 right-0 p-2 ${
         toggleEdit ? "open-edit" : "close-edit"
       }`}
     >
@@ -78,7 +78,7 @@ export default function EditModal({
 
       <div className="w-full flex justify-center">
         <button
-          className="bg-red text-white py-4 rounded-md mt-11 w-full"
+          className="bg-tuftsBlue text-white py-4 rounded-md mt-11 w-full"
           onClick={() => updateEdit(id)}
         >
           Save

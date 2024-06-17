@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import LargeButton from "./LargeButton";
 import InputMsg from "./InputMsg";
 import { exportContext } from "./useStateContext/StateContext";
+import { useRouter } from "next/navigation";
 
 const USER_MAIL_REGEX = /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/;
 const USER_PASSWORD_REGEX = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/;
@@ -13,6 +14,10 @@ export default function Form() {
   const userPasswordRef = useRef();
 
   const { generalMsg, setGeneralMsg, setShowMsg } = exportContext();
+
+  const [isLogin, setIsLogin] = useState(false);
+
+  const router = useRouter();
 
   const [loginInputs, setLoginInputs] = useState({
     userMail: "",
@@ -85,13 +90,9 @@ export default function Form() {
 
   const handleInputSubmit = (e) => {
     e.preventDefault();
-    if (
-      !loginInputs.userMail ||
-      !loginInputs.userPassword
-     
-    ) {
-      setShowMsg(true)
-      setGeneralMsg('Check the form and make sure you meet all requirments.');
+    if (!loginInputs.userMail || !loginInputs.userPassword) {
+      setShowMsg(true);
+      setGeneralMsg("Check the form and make sure you meet all requirments.");
 
       return;
     }
@@ -100,6 +101,9 @@ export default function Form() {
       userMail: "",
       userPassword: "",
     });
+
+    setIsLogin(true);
+    router.push("/pages/home");
   };
 
   return (
@@ -157,7 +161,7 @@ export default function Form() {
       <div className="mt-10 w-full">
         <LargeButton
           text={`Log in`}
-          routeText={`pages/home_screen`}
+          //   routeText={`pages/home_screen`}
           backgroundStyle={`bg-tuftsBlue text-white`}
         />
       </div>
