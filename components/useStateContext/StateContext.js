@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { edit } from "@/public";
 import QRcode from "qrcode";
 import { generateRandomId } from "@/helper";
-import LocalStorage from "@/hooks/LocalStorage";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
 
 const Context = createContext();
 
@@ -23,7 +23,7 @@ export default function StateContext({ children }) {
   const [showQrcode, setShowQrcode] = useState(false);
   const [showSpinner, setShowSpinner] = useState(false);
 
-  const [qrcodes, setQrcodes] = LocalStorage("codes", []);
+  const [qrcodes, setQrcodes] = useLocalStorage("codes", []);
 
   const [customizeQrcode, setCustomizeQrcode] = useState({
     color: "",
@@ -54,7 +54,7 @@ export default function StateContext({ children }) {
 
     QRcode.toDataURL(url, {
       color: {
-        light: '#FFFFFF',
+        light: "#FFFFFF",
         dark: col,
       },
 
@@ -72,11 +72,11 @@ export default function StateContext({ children }) {
 
   const saveToHistory = (url, type, src, name) => {
     const currentDate = new Date();
-    const formattedDate = currentDate.toLocaleDateString('en-US', {
-      weekday: 'long',
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
+    const formattedDate = currentDate.toLocaleDateString("en-US", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
     });
 
     if (url && type && src) {
@@ -99,6 +99,16 @@ export default function StateContext({ children }) {
     }
 
     return;
+  };
+
+  const handleQrcodeDownload = () => {
+    const fileUrl = src;
+    const link = document.createElement("a");
+    link.href = fileUrl;
+    link.download = `${qrcodeName} QRcode`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
@@ -135,6 +145,7 @@ export default function StateContext({ children }) {
         isSelected,
         setIsSelected,
         setQrcodes,
+        handleQrcodeDownload,
       }}
     >
       {children}

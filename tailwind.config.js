@@ -19,7 +19,7 @@ module.exports = {
         oxfordBlue: "#0A2239",
         kellyGreen: "#29BF12",
         lightBlue: "#a8dadc",
-        cardBg: "#f5f7fa",
+        cardBg: "#ebf2fd",
         darkBlue: "#2563eb",
         violet: "#4c1d95",
         fuchsia: "#c026d3",

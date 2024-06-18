@@ -25,7 +25,7 @@ export default function Menu({ navRef }) {
   return (
     <div
       ref={navRef}
-      className={`fixed w-3/4 h-full top-0 right-0 z-[50] py-10 px-5 bg-black ${
+      className={`fixed w-3/4 h-full top-0 right-0 z-[50] py-10 px-5 bg-white ${
         toggleBar ? "open-menu" : "close-menu"
       }`}
     >
@@ -44,7 +44,7 @@ export default function Menu({ navRef }) {
           <span
             className="text-2xl"
             style={{
-              color: pathname === "/pages/home" ? "#CA2828" : "#FFFFFF",
+              color: pathname === "/pages/home" ? "#5390D9" : "#000000",
             }}
           >
             Home
@@ -55,7 +55,7 @@ export default function Menu({ navRef }) {
           <span
             className="text-2xl"
             style={{
-              color: pathname === "/pages/create" ? "#CA2828" : "#FFFFFF",
+              color: pathname === "/pages/create" ? "#5390D9" : "#000000",
             }}
           >
             Create Qr
@@ -66,7 +66,7 @@ export default function Menu({ navRef }) {
           <span
             className="text-2xl"
             style={{
-              color: pathname === "/pages/notification" ? "#CA2828" : "#FFFFFF",
+              color: pathname === "/pages/notification" ? "#5390D9" : "#000000",
             }}
           >
             Notifications
@@ -77,7 +77,7 @@ export default function Menu({ navRef }) {
           <span
             className="text-2xl"
             style={{
-              color: pathname === "/pages/user" ? "#CA2828" : "#FFFFFF",
+              color: pathname === "/pages/user" ? "#5390D9" : "#000000",
             }}
           >
             User

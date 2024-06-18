@@ -42,9 +42,6 @@ export default function page() {
   };
 
   const router = useRouter();
-  const goBack = () => {
-    router.back();
-  };
 
   const search = useSearchParams();
   const qrCodeType = search.get("type");
@@ -56,18 +53,18 @@ export default function page() {
 
   return (
     <Wrapper>
-      <div className="flex justify-between items-center mt-14 w-full">
-        <button
+      <div className="flex justify-end items-center mt-14 w-full">
+        {/* <button
           onClick={goBack}
           className="w-[120px] h-[40px] rounded-md bg-white py-1 px-4 flex justify-center items-center space-x-2"
         >
           <MdNavigateBefore size={25} /> <p className="text-sm">Back</p>
-        </button>
+        </button> */}
 
         {finishPage ? (
           <button
             onClick={() => router.push("/pages/final_page")}
-            className="w-[120px] h-[40px] rounded-md bg-red py-1 px-4 flex justify-center items-center space-x-2"
+            className="w-[120px] h-[40px] rounded-md bg-tuftsBlue py-1 px-4 flex justify-center items-center space-x-2"
           >
             <p className="text-white text-sm">Next</p>
             <MdNavigateNext size={25} color="#fff" />
@@ -76,7 +73,7 @@ export default function page() {
           <button
             onClick={handleNextPage}
             disabled={!qrcodeName || !url ? true : false}
-            className="w-[120px] h-[40px] rounded-md bg-red py-1 px-4 flex justify-center items-center space-x-2"
+            className="w-[120px] h-[40px] rounded-md bg-tuftsBlue py-1 px-4 flex justify-center items-center space-x-2"
           >
             <p className="text-white text-sm">Next</p>
             <MdNavigateNext size={25} color="#fff" />
@@ -84,8 +81,8 @@ export default function page() {
         )}
       </div>
 
-      <h1 className="text-center text-xl text-white mt-5">Create Qrcode</h1>
-      <h3 className="text-white font-semibold text-center mt-5">
+      <h1 className="text-center text-xl mt-5">Create Qrcode</h1>
+      <h3 className="font-semibold text-center mt-5">
         {showQrcode ? "Customize your QRcode" : null}
       </h3>
 
@@ -104,7 +101,7 @@ export default function page() {
         } flex justify-center w-full mt-10`}
       >
         <button
-          className="w-1/2 md:w-1/3 bg-red rounded-md py-2 px-4 text-white outline-none"
+          className="w-full md:w-1/3 bg-tuftsBlue rounded-md py-2 px-4 text-white outline-none"
           onClick={() => generateQrcode("#e9ecef", "#000")}
         >
           Create QRcode
@@ -121,7 +118,7 @@ export default function page() {
             className={`flex flex-col justify-center items-center w-40 md:w-1/3 bg-white p-4 rounded-xl shadow-md`}
           >
             <h3 className="text-black text-lg font-semibold">Preview</h3>
-            <img src={src} alt="qrcode image" className="w-full h-full"/>
+            <img src={src} alt="qrcode image" className="w-full h-full" />
           </div>
         )}
       </div>
@@ -129,7 +126,7 @@ export default function page() {
       <p
         className={`${
           !customizePage || showSpinner ? "hidden" : null
-        } text-sm text-center mt-2 text-white`}
+        } text-sm text-center mt-2`}
       >
         {selectStyle}
       </p>

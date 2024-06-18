@@ -12,14 +12,14 @@ export default function UseCalendar({
   const calendarRef = useRef(null);
 
   const handleDateSelect = (date) => {
-    const formattedDate = date.toLocaleDateString('en-US', {
-      weekday: 'long',
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
+    const formattedDate = date.toLocaleDateString("en-US", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
     });
 
-    setSelectedDate(formattedDate)
+    setSelectedDate(formattedDate);
   };
 
   const closeCalender = (event) => {
@@ -43,7 +43,7 @@ export default function UseCalendar({
         toggleCalendar ? "calendar-opened" : "calendar-closed"
       }`}
     >
-      <div className="bg-red rounded-md text-white p-4 absolute -top-5 left-2">
+      <div className="bg-oxfordBlue rounded-md text-white p-4 absolute -top-5 left-2">
         <Calendar value={date} onClickDay={handleDateSelect} />
       </div>
     </div>

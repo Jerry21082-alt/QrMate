@@ -15,6 +15,7 @@ export default function page() {
     qrcodeName,
     saveToHistory,
     qrcodeHistory,
+    handleQrcodeDownload,
   } = exportContext();
 
   const [isMounted, setIsMounted] = useState(false);
@@ -28,19 +29,9 @@ export default function page() {
     router.back();
   };
 
-  const handleQrcodeDownload = () => {
-    const fileUrl = src;
-    const link = document.createElement("a");
-    link.href = fileUrl;
-    link.download = `${qrcodeName} QRcode`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
   const qrcodeOptions = [
     {
-      icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" id="download"><path fill="#000" d="M12 4a1 1 0 0 0-1 1v9.529l-4.218-4.223a1.043 1.043 0 0 0-1.476 0 1.046 1.046 0 0 0 0 1.478l5.904 5.91c.217.217.506.319.79.305.284.014.573-.088.79-.305l5.904-5.91a1.046 1.046 0 0 0 0-1.478 1.043 1.043 0 0 0-1.476 0L13 14.529V5a1 1 0 0 0-1-1zM5 21a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H6a1 1 0 0 1-1-1z"></path></svg>`,
+      icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#000" id="download"><path fill="#000" d="M12 4a1 1 0 0 0-1 1v9.529l-4.218-4.223a1.043 1.043 0 0 0-1.476 0 1.046 1.046 0 0 0 0 1.478l5.904 5.91c.217.217.506.319.79.305.284.014.573-.088.79-.305l5.904-5.91a1.046 1.046 0 0 0 0-1.478 1.043 1.043 0 0 0-1.476 0L13 14.529V5a1 1 0 0 0-1-1zM5 21a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H6a1 1 0 0 1-1-1z"></path></svg>`,
       label: "Download",
       onClick: () => handleQrcodeDownload(),
     },
@@ -80,7 +71,7 @@ export default function page() {
 
         <button
           onClick={() => saveToHistory(url, type, src, qrcodeName)}
-          className="w-[120px] h-[40px] rounded-md bg-red py-1 px-4 flex justify-center items-center space-x-2"
+          className="w-[120px] h-[40px] rounded-md bg-tuftsBlue py-1 px-4 flex justify-center items-center space-x-2"
         >
           <p className="text-white text-sm">Finish</p>
           <svg
@@ -96,10 +87,10 @@ export default function page() {
         </button>
       </div>
 
-      <h1 className="text-center text-white text-xl font-semibold mt-5">
+      <h1 className="text-center text-xl font-semibold mt-5">
         Congratulations!
       </h1>
-      <h3 className="text-white font-semibold text-center mt-5">
+      <h3 className="font-semibold text-center mt-5">
         You've created a QRcode!
       </h3>
 
@@ -122,12 +113,12 @@ export default function page() {
           <div
             onClick={option.onClick}
             key={option.label}
-            className="w-1/3 md:w-1/4 flex flex-col items-center py-2 px-4 bg-red rounded-md"
+            className="w-1/3 md:w-1/4 flex flex-col items-center py-2 px-4 bg-white rounded-md"
           >
             <div className="w-5 h-5">
               <div dangerouslySetInnerHTML={{ __html: option.icon }} />
             </div>
-            <h4 className="text-xs mt-2 text-white">{option.label}</h4>
+            <h4 className="text-xs mt-2">{option.label}</h4>
           </div>
         ))}
       </div>
