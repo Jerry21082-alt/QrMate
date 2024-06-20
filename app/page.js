@@ -6,7 +6,7 @@ import LargeButton from "@/components/LargeButton";
 
 const page = () => {
   return (
-    <div className="fixed top-0 h-screen bg-white p-2 md:px-56 w-screen flex items-center justify-center">
+    <div className="fixed top-0 h-screen bg-white p-2 md:px-56 w-screen flex flex-col md:flex-row items-center justify-center">
       <div className=" h-[60vh] flex flex-col justify-center items-center w-full rounded-b-[30%]">
         <div className="w-1/2">
           <Image src={logo} alt="company logo" />
