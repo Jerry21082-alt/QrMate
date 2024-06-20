@@ -19,7 +19,7 @@ export default function GeneralMsg({ onClose }) {
   return (
     <>
       <div
-        className={`msg-modal bg-charcoal rounded-lg flex items-center justify-center w-[70%] z-20 p-4 ${
+        className={`msg-modal bg-charcoal rounded-lg flex items-center justify-center w-[70%] md:w-1/3 z-20 p-4 ${
           showMsg ? "open-msg" : "close-msg"
         }`}
       >

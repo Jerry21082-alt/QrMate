@@ -32,7 +32,7 @@ export default function EditModal({
 
   return (
     <div
-      className={`fixed bg-oxfordBlue left-0 bottom-0 right-0 p-2 ${
+      className={`fixed bg-oxfordBlue left-0 bottom-0 right-0 p-2 md:px-96 ${
         toggleEdit ? "open-edit" : "close-edit"
       }`}
     >

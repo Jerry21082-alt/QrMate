@@ -17,7 +17,7 @@ export default function page({ params }) {
     <Wrapper>
       <h1 className="mt-14 text-center">Qrcode Details</h1>
       <div className="flex justify-center w-full mt-8 border-grey border-b">
-        <div className="w-3/4 overflow-hidden flex items-center jusitfy-center rounded-xl mb-4">
+        <div className="w-3/4 md:w-1/3 overflow-hidden flex items-center jusitfy-center rounded-xl mb-4">
           <img
             src={qrcode_details.src}
             alt="qrcode"

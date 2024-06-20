@@ -1,6 +1,4 @@
 import { SlOptions } from "react-icons/sl";
-import { FaRegCirclePause, FaRegCirclePlay } from "react-icons/fa6";
-import { MdDelete } from "react-icons/md";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { exportContext } from "./useStateContext/StateContext";
@@ -110,6 +108,7 @@ export default function QrCodeDetails({
           <SlOptions
             onClick={() => setOpenModal((prev) => !prev)}
             color="#000"
+            cursor="pointer"
           />
         </div>
 

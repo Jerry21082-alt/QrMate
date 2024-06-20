@@ -58,7 +58,7 @@ export default function CreatePage() {
       <h1 className="text-center text-xl font-semibold mt-14">Create QRcode</h1>
 
       <div className="w-full flex justify-center">
-        <div className="w-full md:w-3/4 flex items-center justify-between mt-8 space-x-3 bg-lightCulture p-2 rounded-md border border-culture">
+        <div className="w-full flex items-center justify-between mt-8 space-x-3 bg-lightCulture p-2 rounded-md border border-culture">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             version="1.1"
@@ -111,7 +111,7 @@ export default function CreatePage() {
             query: { type: type },
             pathname: `/pages/previewQrcode/${type}`,
           }}
-          className="rounded-md bg-tuftsBlue p-4 flex justify-center items items-center w-full md:w-3/4 text-white"
+          className="rounded-md bg-tuftsBlue p-4 flex justify-center items items-center w-full text-white"
         >
           Next
         </Link>
