@@ -27,7 +27,7 @@ const page = () => {
             backgroundStyle={`bg-white text-tuftsBlue`}
           />
         </Link>
-        <Link href="/pages/home_screen" className="text-tuftsBlue mt-5">
+        <Link href="/pages/home" className="text-tuftsBlue mt-5">
           Skip for now
         </Link>
       </div>

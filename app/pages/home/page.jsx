@@ -111,7 +111,7 @@ export default function Home() {
       </section>
 
       <div id="scroll" className="max-h-[50vh]" ref={ref}>
-        {qrcodes.length && isMounted ? (
+        {qrcodes.length < 1 && isMounted ? (
           <div className="h-full w-full flex flex-col justify-start">
             {filteredItems.map((detail, i) => (
               <div key={i} className="pb-3">
@@ -138,11 +138,9 @@ export default function Home() {
           </div>
         ) : (
           <div className="flex flex-col justify-center items-center mt-10">
-            <h3 className="text-grey font-semibold text-lg my-2">
-              No active Qrcode
-            </h3>
-            <Link href="/pages/create mt-8 block">
-              <FiPlusCircle size={40} color="#fff" />
+            <h3 className="font-semibold text-lg my-2">No active Qrcode</h3>
+            <Link href="/pages/create" className="mt-8">
+              <FiPlusCircle size={40} color="#000" />
             </Link>
           </div>
         )}
