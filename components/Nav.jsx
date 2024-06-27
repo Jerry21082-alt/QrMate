@@ -53,7 +53,7 @@ export default function Nav() {
           <Link
             href="/pages/home"
             style={{
-              color: pathname === "/pages/home" ? "#CA2828" : "#FFFFFF",
+              color: pathname === "/pages/home" ? "#CA2828" : "#000",
             }}
           >
             Home
@@ -63,7 +63,7 @@ export default function Nav() {
           <Link
             href="/pages/create"
             style={{
-              color: pathname === "/pages/create" ? "#CA2828" : "#FFFFFF",
+              color: pathname === "/pages/create" ? "#CA2828" : "#000",
             }}
           >
             Create Qrcode
@@ -73,7 +73,7 @@ export default function Nav() {
           <Link
             href="/pages/notification"
             style={{
-              color: pathname === "/pages/notification" ? "#CA2828" : "#FFFFFF",
+              color: pathname === "/pages/notification" ? "#CA2828" : "#000",
             }}
           >
             Notification
@@ -83,7 +83,7 @@ export default function Nav() {
           <Link
             href="/pages/user"
             style={{
-              color: pathname === "/pages/user" ? "#CA2828" : "#FFFFFF",
+              color: pathname === "/pages/user" ? "#CA2828" : "#000",
             }}
           >
             User
