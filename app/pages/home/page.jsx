@@ -111,7 +111,7 @@ export default function Home() {
       </section>
 
       <div id="scroll" className="max-h-[50vh]" ref={ref}>
-        {qrcodes.length && isMounted ? (
+        {qrcodes.length > 0 && isMounted ? (
           <div className="h-full w-full flex flex-col justify-start">
             {filteredItems.map((detail, i) => (
               <div key={i} className="pb-3">
